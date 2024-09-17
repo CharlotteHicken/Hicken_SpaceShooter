@@ -20,8 +20,8 @@ public class Player : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        Vector3 velocity = new Vector3(horizontalInput * speed * Time.deltaTime, verticalInput * speed * Time.deltaTime, 0);
-        transform.position = transform.position + velocity;
+        Vector3 velocity = new Vector3(horizontalInput * speed, verticalInput * speed, 0);
+        transform.position = transform.position + velocity * Time.deltaTime;
     }
 
 }
