@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Codice.Client.Common.GameUI;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,19 @@ public class Player : MonoBehaviour
     public Transform enemyTransform;
     public GameObject bombPrefab;
     public Transform bombsTransform;
+    public float speed;
 
     void Update()
     {
+        PlayerMovement();
+    }
 
+    public void PlayerMovement()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 velocity = new Vector3(horizontalInput * speed * Time.deltaTime, verticalInput * speed * Time.deltaTime, 0);
+        transform.position = transform.position + velocity;
     }
 
 }
