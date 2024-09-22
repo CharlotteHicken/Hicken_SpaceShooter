@@ -129,4 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d47aa4a8b38e97448c22dbfdc9e14da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HomingMissilePrefab: {fileID: 0}
+  asteroidTransforms: []
+  enemyTransform: {fileID: 0}
+  bombPrefab: {fileID: 0}
+  bombsTransform: {fileID: 0}
+  maxSpeed: 6
+  accelerateTime: 1
+  decelerateTime: 3
