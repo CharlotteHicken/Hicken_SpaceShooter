@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public float maxSpeed;
     public float accelerateTime;
     public float decelerateTime;
+    public float detectRadius;
+    public int radiusPointNumber;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        EnemyRadar(detectRadius, radiusPointNumber);
     }
 
     public void PlayerMovement()
@@ -51,6 +54,29 @@ public class Player : MonoBehaviour
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
 
         transform.position += velocity * Time.deltaTime;
+    }
+
+    public void EnemyRadar(float radius, int circlePoints)
+    {
+        Color lineColor;
+        if ((enemyTransform.position - transform.position).magnitude <= radius)
+        {
+            lineColor = Color.red;
+        }
+        else
+        {
+            lineColor = Color.green;
+        }
+        
+        float degrees = 360 / circlePoints;
+        float radians = degrees * Mathf.Deg2Rad;
+
+        for (int i = 0; i <= circlePoints; i++)
+        {
+            Vector3 currentPoint = new Vector3(Mathf.Cos(radians + (radians * i)), Mathf.Sin(radians + (radians * i))) * radius;
+            Vector3 nextPoint = new Vector3(Mathf.Cos(radians + (radians * (i+1))), Mathf.Sin(radians + (radians * (i+1)))) * radius;
+            Debug.DrawLine(transform.position + currentPoint, transform.position + nextPoint, lineColor);
+        }
     }
 
 }
