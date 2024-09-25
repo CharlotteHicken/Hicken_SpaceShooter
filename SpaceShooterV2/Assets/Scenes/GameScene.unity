@@ -761,6 +761,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 596075294928896946, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2301990505270886567, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
       propertyPath: m_Name
       value: Orbital System
@@ -775,7 +779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3695347650650143362, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.014387669
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3695347650650143362, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -804,6 +808,18 @@ PrefabInstance:
     - target: {fileID: 3695347650650143362, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4810190612781865404, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382019928816532762, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
+      propertyPath: orbitSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382019928816532762, guid: c3b47d100d80f96419fd12c13303c43e, type: 3}
+      propertyPath: orbitRadius
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3169,6 +3185,18 @@ PrefabInstance:
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: maxRadarRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: powerupNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: powerupPrefab
+      value: 
+      objectReference: {fileID: 1567431237259788, guid: 03444c0c59102ba46bb1a8b5a1b0a810, type: 3}
+    - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
+      propertyPath: powerupRadius
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6890330259706833056, guid: abc125f00ae369940b2c5c0275186637, type: 3}
       propertyPath: accelerateTime
