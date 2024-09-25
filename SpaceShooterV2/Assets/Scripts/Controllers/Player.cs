@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public List<Transform> asteroidTransforms;
     public Transform enemyTransform;
     public GameObject bombPrefab;
+    public GameObject powerupPrefab;
     public Transform bombsTransform;
     Vector3 velocity;
 
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
     public float decelerateTime;
     public float detectRadius;
     public int radiusPointNumber;
+    public float powerupRadius;
+    public int powerupNumber;
 
     private void Start()
     {
@@ -29,6 +32,11 @@ public class Player : MonoBehaviour
     {
         PlayerMovement();
         EnemyRadar(detectRadius, radiusPointNumber);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnPowerups(powerupRadius, powerupNumber);
+        }
     }
 
     public void PlayerMovement()
@@ -76,6 +84,18 @@ public class Player : MonoBehaviour
             Vector3 currentPoint = new Vector3(Mathf.Cos(radians + (radians * i)), Mathf.Sin(radians + (radians * i))) * radius;
             Vector3 nextPoint = new Vector3(Mathf.Cos(radians + (radians * (i+1))), Mathf.Sin(radians + (radians * (i+1)))) * radius;
             Debug.DrawLine(transform.position + currentPoint, transform.position + nextPoint, lineColor);
+        }
+    }
+
+    public void SpawnPowerups(float radius, int numberOfPowerups)
+    {
+        float degrees = 360 / numberOfPowerups;
+        float radians = degrees * Mathf.Deg2Rad;
+
+        for (int i = 0; i <= numberOfPowerups; i++)
+        {
+            Vector3 spawnPoint = new Vector3(Mathf.Cos(radians + (radians * i)), Mathf.Sin(radians + (radians * i))) * radius;
+            Instantiate(powerupPrefab, transform.position + spawnPoint, Quaternion.identity);
         }
     }
 
