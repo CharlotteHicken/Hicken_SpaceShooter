@@ -22,6 +22,12 @@ public class Player : MonoBehaviour
     public float powerupRadius;
     public int powerupNumber;
 
+    public Vector2 bombOffset;
+    public float bombTrailSpacing;
+    public int numberOfTrailBombs;
+    public float spawnDistance;
+    public float detectRange;
+
     private void Start()
     {
         acceleration = maxSpeed / accelerateTime;
@@ -37,6 +43,21 @@ public class Player : MonoBehaviour
         {
             SpawnPowerups(powerupRadius, powerupNumber);
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            SpawnBombAtOffset(bombOffset);
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SpawnBombTrail(bombTrailSpacing, numberOfTrailBombs);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SpawnBombOnRandomCorner(spawnDistance);
+        }
+
+        DetectAsteroids(detectRange, asteroidTransforms);
     }
 
     public void PlayerMovement()
@@ -97,6 +118,41 @@ public class Player : MonoBehaviour
             Vector3 spawnPoint = new Vector3(Mathf.Cos(radians + (radians * i)), Mathf.Sin(radians + (radians * i))) * radius;
             Instantiate(powerupPrefab, transform.position + spawnPoint, Quaternion.identity);
         }
+    }
+
+    public void SpawnBombAtOffset(Vector3 inOffset)
+    {
+        inOffset = gameObject.transform.position + inOffset;
+        Instantiate(bombPrefab, inOffset, Quaternion.identity);
+    }
+
+    public void SpawnBombTrail(float inBombSpacing, int inNumberOfBombs)
+    {
+        float spacing = 0;
+        spacing += inBombSpacing;
+        for (int i = 0; i < inNumberOfBombs; i++)
+        {
+            Instantiate(bombPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - spacing, 0), Quaternion.identity);
+            spacing += inBombSpacing;
+        }
+    }
+
+    public void SpawnBombOnRandomCorner(float inDistance)
+    {
+        int xDirection = Random.Range(-1, 1);
+        int yDirection = Random.Range(-1, 1);
+        float xSpawnPoint = xDirection * inDistance;
+        float ySpawnPoint = yDirection * inDistance;
+
+        Instantiate(bombPrefab, new Vector3(gameObject.transform.position.x + xSpawnPoint + inDistance / 2, gameObject.transform.position.y + ySpawnPoint + inDistance / 2, 0), Quaternion.identity);
+    }
+
+    public void DetectAsteroids(float inMaxRange, List<Transform> inAsteroids)
+    {
+        //if (inAsteroids.transform.position >= (gameObject.transform.position + inMaxRange)
+        //{
+        //      Debug.DrawLine(gameobject.transform.position, normalized position of inAsteroid * 2.5, color.Green);
+        //}
     }
 
 }

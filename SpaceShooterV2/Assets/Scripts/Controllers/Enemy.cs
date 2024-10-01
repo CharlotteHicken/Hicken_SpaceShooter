@@ -7,14 +7,24 @@ public class Enemy : MonoBehaviour
     float acceleration;
     public float accelerationRate;
     public Transform player;
+    public int spawnTime;
+    int currentFrame;
+    public GameObject rocketPrefab;
 
     private void Start()
     {
+        currentFrame = 0;
         acceleration = maxSpeed / accelerationRate;
     }
     private void Update()
     {
+        if (currentFrame > spawnTime)
+        {
+            Instantiate(rocketPrefab, transform.position, Quaternion.identity);
+            currentFrame = 0;
+        }
         MoveToPlayer();
+        currentFrame++;
     }
 
     void MoveToPlayer()
