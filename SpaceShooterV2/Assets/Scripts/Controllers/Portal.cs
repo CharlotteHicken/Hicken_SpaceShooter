@@ -12,10 +12,13 @@ public class Portal : MonoBehaviour
     public GameObject player;
     public GameObject currentPortal;
     Color currentColor;
-    bool canEnterPortal;
+    public static bool canEnterPortal;
+    public int teleportTimerLimit;
+    static int currentFrame;
 
     private void Start()
     {
+        canEnterPortal = false;
         if (lineColor == "blue")
         {
             currentColor = Color.blue;
@@ -28,15 +31,17 @@ public class Portal : MonoBehaviour
     void Update()
     {
         DrawPortal(portalRaidus, portalPoints);
-        if ((otherPortal.transform.position - player.transform.position).magnitude > portalRaidus)
-        {
+        if (currentFrame >= teleportTimerLimit)
+        { 
             canEnterPortal = true;
         }
-        if ((otherPortal.transform.position - player.transform.position).magnitude <= portalRaidus && canEnterPortal)
+        if (canEnterPortal && (player.transform.position - transform.position).magnitude <= portalRaidus)
         {
             Teleport();
             canEnterPortal = false;
+            currentFrame = 0;
         }
+        currentFrame++;
     }
 
     public void DrawPortal(float radius, int circlePoints)

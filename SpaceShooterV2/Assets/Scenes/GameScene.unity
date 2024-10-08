@@ -284,6 +284,7 @@ MonoBehaviour:
   otherPortal: {fileID: 573903004}
   player: {fileID: 2030902520}
   currentPortal: {fileID: 103593114}
+  teleportTimerLimit: 360
 --- !u!4 &103593116
 Transform:
   m_ObjectHideFlags: 0
@@ -828,6 +829,7 @@ MonoBehaviour:
   otherPortal: {fileID: 103593114}
   player: {fileID: 2030902520}
   currentPortal: {fileID: 573903004}
+  teleportTimerLimit: 360
 --- !u!4 &573903006
 Transform:
   m_ObjectHideFlags: 0
