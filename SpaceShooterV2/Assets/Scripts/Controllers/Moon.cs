@@ -9,13 +9,6 @@ public class Moon : MonoBehaviour
     public float orbitSpeed;
     float currentAngle = 0;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -28,6 +21,5 @@ public class Moon : MonoBehaviour
         Vector3 movePosition = new Vector3(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle)) * radius;
 
         transform.position = movePosition + target.position;
-
     }
 }

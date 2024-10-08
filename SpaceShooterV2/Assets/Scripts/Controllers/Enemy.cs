@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public int spawnTime;
     int currentFrame;
     public GameObject rocketPrefab;
+    public GameObject bombPrefab;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Enemy : MonoBehaviour
         if (currentFrame > spawnTime)
         {
             Instantiate(rocketPrefab, transform.position, Quaternion.identity);
+            Instantiate(bombPrefab);
             currentFrame = 0;
         }
         MoveToPlayer();
